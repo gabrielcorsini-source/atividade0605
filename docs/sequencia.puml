@@ -1,0 +1,32 @@
+@startuml
+class Filme {
+    titulo: str
+    genero: str
+    duracao: int
+}
+
+class FilmeView {
+    +mostrar_filmes(filme)
+    +mostrar_mensagem(msg)
+}
+
+class FilmeController {
+    +criar(titulo, genero, duracao )
+    +listar()
+}
+
+class FilmeService {
+    +criar_filme(titulo, genero, duracao)
+    +listar_filme(): List
+}
+
+class FilmeRepository {
+    +salvar(filme: Filme)
+    +listar(): List
+}
+
+FilmeView --> FilmeController
+FilmeController --> FilmeService
+FilmeService --> FilmeRepository
+FilmeService --> Filme
+@enduml
